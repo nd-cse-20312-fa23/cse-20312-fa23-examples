@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     	printf("%lu: %s\n", str_length(argv[i]), argv[i]);
     }
 
-    char buffer[BUFSIZ];
+    char buffer[BUFSIZ]; // BAD: char *buffer = "";
     while (fgets(buffer, BUFSIZ, stdin)) {
     	assert(str_length(buffer) == strlen(buffer));
     	printf("%lu: %s", str_length(buffer), buffer);
