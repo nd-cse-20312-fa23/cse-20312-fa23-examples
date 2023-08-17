@@ -15,6 +15,8 @@ int intcmp(const void *a, const void *b) {
 }
 
 bool has_duplicates(int *array, size_t n) {
+    // Time:	O(nlogn)
+    // Space:	O(1)
     qsort(array, n, sizeof(int), intcmp);
 
     for (size_t i = 1; i < n; i++)

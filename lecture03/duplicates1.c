@@ -9,6 +9,8 @@
 /* Functions */
 
 bool has_duplicates(int *array, size_t n) {
+    // Time:	O(n^2)
+    // Space:	O(1)
     for (size_t i = 0; i < n; i++)
 	for (size_t j = i + 1; j < n; j++)  // Demo: j = i (use gdb to trace)
 	    if (array[i] == array[j])

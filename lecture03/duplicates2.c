@@ -9,6 +9,9 @@
 /* Functions */
 
 bool has_duplicates(int *array, size_t n) {
+    // Time:	O(n)
+    // Space:	O(n*n)
+
     // Demo: malloc(n) -> segfault -> gdb
     bool *seen = calloc(n*n, sizeof(bool));
 
