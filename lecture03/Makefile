@@ -2,7 +2,7 @@ CC=		gcc
 CFLAGS=		-Wall -g -std=gnu99
 LD=		gcc
 LDFLAGS=	-L.
-TARGETS=	duplicates1 duplicates2
+TARGETS=	duplicates1 duplicates2 duplicates3
 
 all:	$(TARGETS)
 
