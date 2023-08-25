@@ -13,17 +13,21 @@ bool has_duplicates(int *array, size_t n) {
     // Space:	O(n*n)
 
     // Demo: malloc(n) -> segfault -> gdb
-    bool *seen = calloc(n*n, sizeof(bool));
+    bool *seen   = calloc(n*n, sizeof(bool));
+    bool  result = false;
 
     for (size_t i = 0; i < n; i++) {
-    	if (seen[array[i]])
-    	    return true;
+    	if (seen[array[i]]) {
+    	    result = true;
+    	    goto finish;
+	}
     	seen[array[i]] = true;
     }
 
     // Demo: forget to do this (valgrind)
+finish:
     free(seen);
-    return false;
+    return result;
 }
 
 /* Main Execution */
