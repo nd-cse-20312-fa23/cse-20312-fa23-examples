@@ -9,8 +9,8 @@
 
 typedef struct {
     int	    *data;	// Internal array
-    size_t   size;	// Number of valid elements
     size_t   capacity;	// Total number of elements
+    size_t   size;	// Number of valid elements
 } Array;
 
 /* Functions */
