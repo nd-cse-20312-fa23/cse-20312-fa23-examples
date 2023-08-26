@@ -1,12 +1,15 @@
 CC=		gcc
 CFLAGS=		-Wall -g -std=gnu99
-SOURCES=	$(wildcard *.c)
-TARGETS=	$(SOURCES:.c=)
+LD=		gcc
+LDFLAGS=
 
-all:	$(TARGETS)
+all:		array_test
 
-%:	%.c
-	$(CC) $(CFLAGS) -o $@ $<
+%.o:		%.c array.h
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+array_test:	array_test.o array.o
+	$(LD) $(LDFLAGS) -o $@ $^
 
 clean:
-	rm -f $(TARGETS) *.o
+	rm -f array_test *.o
