@@ -20,4 +20,4 @@ void	array_delete(Array *array);
 void	array_append(Array *array, int value);
 int	array_at(Array *array, size_t index);
 ssize_t	array_index(Array *array, int value);
-void	array_remove(Array *array, size_t index);
+void	array_insert(Array *array, size_t index, int value);

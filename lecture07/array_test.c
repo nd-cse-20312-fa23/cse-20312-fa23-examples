@@ -11,7 +11,7 @@
 int main(int argc, char *argv[]) {
     // Create Array
     Array* array = array_create();
-    
+
     printf("array->size     = %lu\n", array->size);
     printf("array->capacity = %lu\n", array->capacity);
 
@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 
     // Access elements in Array
     for (size_t i = 0; i < array->size; i++) {
-    	printf("array[%lu] = %d\n", i, array_at(array, i));
+        printf("array[%lu] = %d\n", i, array_at(array, i));
     }
 
     // Search for elements in Array
@@ -36,15 +36,17 @@ int main(int argc, char *argv[]) {
     printf("array_index(6) = %ld\n", array_index(array, 6));
     printf("array_index(7) = %ld\n", array_index(array, 7));
 
-    // Remove elements from Array
-    array_remove(array, 1);
-    array_remove(array, 2);
-    
+    // Insert elements from Array
+    array_insert(array, 0, 2);
+    array_insert(array, 0, 1);
+    array_insert(array, 2, 3);
+    array_insert(array, 4, 5);
+
     printf("array->size     = %lu\n", array->size);
     printf("array->capacity = %lu\n", array->capacity);
-    
+
     for (size_t i = 0; i < array->size; i++) {
-    	printf("array[%lu] = %d\n", i, array_at(array, i));
+        printf("array[%lu] = %d\n", i, array_at(array, i));
     }
 
     array_delete(array);
