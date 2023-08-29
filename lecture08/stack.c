@@ -10,7 +10,7 @@ void	stack_push(Stack *s, int value) {
 
 int	stack_pop(Stack *s) {
     int top = stack_top(s);
-    array_remove(s, s->size - 1);
+    s->size--;
     return top;
 }
 
