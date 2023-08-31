@@ -14,6 +14,7 @@ struct Node {
 };
 
 Node *	node_create(int data, Node *next);
+void	node_delete(Node *n, bool recursive);
 
 /* List Structure */
 

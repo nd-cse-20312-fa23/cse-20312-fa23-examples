@@ -28,5 +28,6 @@ int main(int argc, char *argv[]) {
     	printf("list_pop() = %d\n", list_pop(&l));
     }
 
+    node_delete(l.head, true);
     return 0;
 }

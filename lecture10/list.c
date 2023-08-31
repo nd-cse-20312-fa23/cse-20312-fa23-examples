@@ -13,6 +13,17 @@ Node *	node_create(int data, Node *next) {
     return n;
 }
 
+void	node_delete(Node *n, bool recursive) {
+    if (!n) {
+    	return;
+    }
+
+    if (recursive) {
+	node_delete(n->next, recursive);
+    }
+    free(n);
+}
+
 /* List Structure */
 
 void	list_push(List *l, int value) {
