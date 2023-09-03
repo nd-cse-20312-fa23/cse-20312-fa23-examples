@@ -3,13 +3,13 @@ CFLAGS=		-Wall -g -std=gnu99
 LD=		gcc
 LDFLAGS=
 
-all:		buffer_test
+all:		list_test
 
-%.o:		%.c buffer.h
+%.o:		%.c list.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-buffer_test:	buffer_test.o buffer.o
+list_test:	list_test.o list.o
 	$(LD) $(LDFLAGS) -o $@ $^
 
 clean:
-	rm -f buffer_test *.o
+	rm -f list_test *.o
