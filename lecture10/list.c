@@ -35,7 +35,7 @@ int	list_pop(List *l) {
     l->head = l->head->next;
 
     int value = n->data;
-    free(n);
+    node_delete(n, false);
     return value;
 }
 
