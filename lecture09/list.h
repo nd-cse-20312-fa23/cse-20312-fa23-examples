@@ -1,4 +1,4 @@
-/* Lecture 10: Linked List */
+/* Lecture 09: Linked List */
 
 #pragma once
 
