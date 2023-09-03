@@ -27,13 +27,14 @@ void	node_delete(Node *n, bool recursive) {
 /* Queue Structure */
 
 void	queue_push(Queue *q, int value) {
+    Node *n = node_create(value, NULL);
     if (!q->tail) {
-    	q->head = node_create(value, NULL);
-    	q->tail = q->head;
+    	q->head = n;
     } else {
-    	q->tail->next = node_create(value, NULL);
-    	q->tail       = q->tail->next;
+    	q->tail->next = n;
     }
+    
+    q->tail = n;
 }
 
 int	queue_pop(Queue *q) {
