@@ -1,15 +1,6 @@
 /* Lecture 12 */
 
-#include "array.h"
-
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-/* Constants */
-
-#define WHITESPACE " \t\n"
+#include "search.h"
 
 /* Functions */
 
@@ -32,28 +23,4 @@ bool linear_search_r(Array *array, int target, int index) {
 
     // Recursive: check next item
     return linear_search_r(array, target, index + 1);
-}
-
-/* Main Execution */
-
-int main(int argc, char *argv[]) {
-    char buffer[BUFSIZ];
-
-    while (fgets(buffer, BUFSIZ, stdin)) {
-    	Array *numbers = array_create();
-
-	for (char *token = strtok(buffer, WHITESPACE); token; token = strtok(NULL, WHITESPACE)) {
-    	    array_append(numbers, atoi(token));
-	}
-
-	if (!fgets(buffer, BUFSIZ, stdin)) {
-	    break;
-	}
-	    
-	puts(linear_search(numbers, atoi(buffer)) ? "YEAH" : "NOPE");
-	puts(linear_search_r(numbers, atoi(buffer), 0) ? "YEAH" : "NOPE");
-
-	array_delete(numbers);
-    }
-    return 0;
 }

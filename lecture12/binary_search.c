@@ -1,15 +1,6 @@
 /* Lecture 12 */
 
-#include "array.h"
-
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-/* Constants */
-
-#define WHITESPACE " \t\n"
+#include "search.h"
 
 /* Functions */
 
@@ -53,28 +44,4 @@ bool binary_search_r(Array *array, int target, int start, int end) {
 	return binary_search_r(array, target, start, middle - 1);
     else
 	return binary_search_r(array, target, middle + 1, end);
-}
-
-/* Main Execution */
-
-int main(int argc, char *argv[]) {
-    char buffer[BUFSIZ];
-
-    while (fgets(buffer, BUFSIZ, stdin)) {
-    	Array *numbers = array_create();
-
-	for (char *token = strtok(buffer, WHITESPACE); token; token = strtok(NULL, WHITESPACE)) {
-    	    array_append(numbers, atoi(token));
-	}
-
-	if (!fgets(buffer, BUFSIZ, stdin)) {
-	    break;
-	}
-	    
-	puts(binary_search(numbers, atoi(buffer)) ? "YEAH" : "NOPE");
-	puts(binary_search_r(numbers, atoi(buffer), 0, numbers->size - 1) ? "YEAH" : "NOPE");
-
-	array_delete(numbers);
-    }
-    return 0;
 }
