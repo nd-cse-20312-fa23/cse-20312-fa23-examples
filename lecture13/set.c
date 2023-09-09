@@ -10,12 +10,11 @@
 
 void	set_add(Set *s, int value) {
     // Check if value is in set (skip if found to maintain uniqueness)
-    if (set_contains(s, value))
-    	return;
+    if (set_contains(s, value)) return;
 
     // Search for insertion location
-    size_t index;
-    for (index = 0; index < s->size && s->data[index] < value; index++) {}
+    size_t index = 0;
+    while (index < s->size && s->data[index] < value) { index++; }
 
     // Insert into array
     array_insert(s, index, value);
