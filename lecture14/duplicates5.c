@@ -7,15 +7,19 @@
 #include <stdio.h>
 #include <time.h>
 
+/* Constants */
+
+#define BITS (sizeof(Bitset)*8)
+
 /* Functions */
 
 bool has_duplicates(int *array, size_t n) {
-    Bitset  *bs = calloc(n*n/sizeof(Bitset), sizeof(Bitset));
+    Bitset  *bs = calloc(n*n/BITS, sizeof(Bitset));
     bool result = false;
 
     for (size_t i = 0; i < n; i++) {
-    	size_t bs_index = array[i] / sizeof(Bitset);
-    	size_t bs_value = array[i] % sizeof(Bitset);
+    	size_t bs_index = array[i] / BITS;
+    	size_t bs_value = array[i] % BITS;
     	if (bitset_contains(&bs[bs_index], bs_value)) {
     	    result = true;
 	    goto finish;
