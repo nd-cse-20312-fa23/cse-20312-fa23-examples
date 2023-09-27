@@ -32,7 +32,7 @@ void merge(int *a, size_t left_size, size_t right_size) {
 	}
 
 	// Copy the lesser of the left or right arrays
-	if (a[left_index] < a[left_size + right_index]) {
+	if (a[left_index] <= a[left_size + right_index]) {
     	    merged[merged_index] = a[left_index++];
 	} else {
     	    merged[merged_index] = a[left_size + right_index++];
