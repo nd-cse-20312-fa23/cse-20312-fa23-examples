@@ -2,7 +2,7 @@ CC=		gcc
 CFLAGS=		-Wall -g -std=gnu99 -O2
 LD=		gcc
 LDFLAGS=
-TARGETS=	bubble_sort insertion_sort selection_sort merge_sort
+TARGETS=	bubble_sort insertion_sort selection_sort merge_sort point_sort
 
 all:		$(TARGETS)
 
@@ -19,6 +19,9 @@ selection_sort:	selection_sort.o utils.o
 	$(LD) $(LDFLAGS) -o $@ $^
 
 merge_sort:	merge_sort.o utils.o
+	$(LD) $(LDFLAGS) -o $@ $^
+
+point_sort:	point_sort.o utils.o
 	$(LD) $(LDFLAGS) -o $@ $^
 
 benchmark:	$(TARGETS)
