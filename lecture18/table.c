@@ -35,6 +35,7 @@ void	    table_insert(Table *t, int value) {
     // Linear probing
     ssize_t bucket = table_locate(t, value);
     t->buckets[bucket] = value;
+    t->size++;
 }
 
 bool	    table_search(Table *t, int value) {
