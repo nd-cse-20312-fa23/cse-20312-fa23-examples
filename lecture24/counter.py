@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 
+from dataclasses import dataclass
+
 # Class
 
+@dataclass
 class Counter:
-    def __init__(self, n=0):
-        self.data = n
+    data: int = 0
 
     def increment(self, n=1):
         self.data += n
