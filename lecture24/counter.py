@@ -8,14 +8,14 @@ from dataclasses import dataclass
 class Counter:
     data: int = 0
 
-    def increment(self, n=1):
+    def increment(self, n: int=1) -> None:
         self.data += n
 
     @property
-    def count(self):
+    def count(self) -> int:
         return self.data
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'Counter({self.data})'
 
 # Main Execution
