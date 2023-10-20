@@ -4,13 +4,27 @@ import sys
 
 # Main Execution
 
-def main():
+def main(arguments=sys.argv[1:]):
+    ''' Compute the average of all the command line arguments.
+    
+    >>> main('1 2 3'.split())
+    Average of [1, 2, 3] is 2.0
+    
+    >>> main('3 9 6'.split())
+    Average of [3, 6, 9] is 6.0
+    '''
     numbers = []
-    for argument in sys.argv[1:]:
-        numbers.append(int(argument))
+    for argument in arguments:
+        try:
+            numbers.append(int(argument))
+        except ValueError:
+            pass
 
-    average = sum(numbers) / len(numbers)
-    print(f'Average of {numbers} is {average}')
+    try:
+        average = sum(numbers) / len(numbers)
+        print(f'Average of {sorted(numbers)} is {average}')
+    except ZeroDivisionError:
+        pass
 
 if __name__ == '__main__':
     main()
