@@ -75,6 +75,30 @@ class StackTest(unittest.TestCase):
             
         self.assertTrue(s.empty())
         self.assertRaises(IndexError, s.top)
+    
+    def test_05_str(self):
+        s = stack.Stack()
+        self.assertEqual(s.data, [])
+        self.assertEqual(str(s), 'Stack([])')
+        self.assertTrue(s.empty())
+        self.assertRaises(IndexError, s.top)
+
+        d = [1, 2, 3]
+        for n in d:
+            s.push(n)
+            self.assertEqual(s.top(), n)
+        self.assertEqual(str(s), 'Stack([1, 2, 3])')
+        self.assertEqual(s.data, d)
+        self.assertFalse(s.empty())
+
+        for i, _ in enumerate(d, 1):
+            self.assertFalse(s.empty())
+            self.assertEqual(s.top(), d[-i])
+            self.assertEqual(s.pop(), d[-i])
+            
+        self.assertEqual(str(s), 'Stack([])')
+        self.assertTrue(s.empty())
+        self.assertRaises(IndexError, s.top)
 
 # Main Execution
 
