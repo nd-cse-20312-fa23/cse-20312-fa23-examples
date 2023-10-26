@@ -6,27 +6,49 @@ from dataclasses import dataclass
 
 @dataclass
 class Counter:
-    data: int = 0
+    value: int = 0
 
     def increment(self, n: int=1) -> None:
-        self.data += n
+        ''' Increment internal value by n 
+
+        >>> c = Counter()
+        >>> c.increment()
+        >>> c.value == 1
+        True
+        >>> c.increment(2)
+        >>> c.value == 3
+        True
+        '''
+        self.value += n
 
     @property
     def count(self) -> int:
-        return self.data
+        ''' Return internal value
+        >>> c = Counter()
+        >>> c.count
+        0
+        >>> c = Counter(10)
+        >>> c.count
+        10
+        '''
+        return self.value
 
     def __str__(self) -> str:
-        return f'Counter({self.data})'
+        return f'Counter({self.value})'
 
 # Main Execution
 
-c1 = Counter()
-c2 = Counter(10)
+def main():
+    c1 = Counter()
+    c2 = Counter(10)
 
-c1.increment()
-c2.increment()
+    c1.increment()
+    c2.increment()
 
-print(c1.count)
-print(c1)
-print(c2.count)
-print(c2)
+    print(c1.count)
+    print(c1)
+    print(c2.count)
+    print(c2)
+
+if __name__ == '__main__':
+    main()
