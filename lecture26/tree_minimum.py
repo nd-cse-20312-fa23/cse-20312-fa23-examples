@@ -7,6 +7,7 @@ Find the minimum value in a binary tree using divide and conquer.
 '''
 
 from dataclasses import dataclass
+from typing      import Optional
 import sys
 
 # Classes
@@ -14,12 +15,12 @@ import sys
 @dataclass
 class Node:
     value:  int
-    left:   'Node' = None
-    right:  'Node' = None
+    left:   Optional['Node'] = None
+    right:  Optional['Node'] = None
 
 # Functions
 
-def tree_minimum(node):
+def tree_minimum(node: Optional[Node]) -> int:
     ''' Use divide and conquer to compute the minimum of binary tree '''
     # Base Case: Invalid Node
     if node is None:
@@ -34,7 +35,7 @@ def tree_minimum(node):
 
 # Main Execution
 
-def main():
+def main() -> None:
     # Create tree
     root = Node(7,
         Node(6,

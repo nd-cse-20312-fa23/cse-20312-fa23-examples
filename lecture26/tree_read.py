@@ -7,6 +7,7 @@ Read in tree in BFS format using divide and conquer.
 '''
 
 from dataclasses import dataclass
+from typing      import Optional
 import sys
 
 # Classes
@@ -14,12 +15,12 @@ import sys
 @dataclass
 class Node:
     value:  int
-    left:   'Node' = None
-    right:  'Node' = None
+    left:   Optional['Node'] = None
+    right:  Optional['Node'] = None
 
 # Functions
 
-def tree_read(array, index=0):
+def tree_read(array: list[int], index: int=0) -> Optional[Node]:
     ''' Use divide and conquer to read binary tree in BFS format '''
     # Base Case: Invalid Node
     if index >= len(array) or not array[index]:
@@ -34,7 +35,7 @@ def tree_read(array, index=0):
 
 # Main Execution
 
-def main():
+def main() -> None:
     ''' For each line, read the BFS tree and print out the root node '''
     for line in sys.stdin:
         strs = line.split()             # Separate individual strings in line

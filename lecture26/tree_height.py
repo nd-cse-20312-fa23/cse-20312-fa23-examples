@@ -7,18 +7,19 @@ Find the height of a binary tree using divide and conquer.
 '''
 
 from dataclasses import dataclass
+from typing      import Optional
 
 # Classes
 
 @dataclass
 class Node:
     value:  int
-    left:   'Node' = None
-    right:  'Node' = None
+    left:   Optional['Node'] = None
+    right:  Optional['Node'] = None
 
 # Functions
 
-def tree_height(node):
+def tree_height(node: Optional[Node]) -> int:
     ''' Use divide and conquer to compute the minimum of binary tree '''
     # Base Case: Invalid Node
     if node is None:
@@ -33,7 +34,7 @@ def tree_height(node):
 
 # Main Execution
 
-def main():
+def main() -> None:
     # Create tree
     root = Node(7,
         Node(6,
