@@ -3,16 +3,17 @@
 # Classes
 
 from dataclasses import dataclass
+from typing      import Iterator, Optional
 
 @dataclass
 class Node:
     value:  str
-    left:   'Node' = None
-    right:  'Node' = None
+    left:   Optional['Node'] = None
+    right:  Optional['Node'] = None
 
 # Functions
 
-def tree_values1(root: Node) -> list[Node]:
+def tree_values1(root: Optional[Node]) -> list[str]:
     if not root:
         return []
 
@@ -20,7 +21,7 @@ def tree_values1(root: Node) -> list[Node]:
         tree_values1(root.left) + [root.value] + tree_values1(root.right)
     )
 
-def tree_values2(root: Node) -> list[Node]:
+def tree_values2(root: Optional[Node]) -> Iterator[str]:
     if not root:
         return
     
