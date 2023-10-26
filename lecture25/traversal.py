@@ -7,18 +7,19 @@ This demonstrates traversing a tree using DFS and BFS.
 
 from dataclasses import dataclass
 from collections import deque
+from typing      import Optional
 
 # Classes
 
 @dataclass
 class Node:
     value:  str
-    left:   'Node' = None
-    right:  'Node' = None
+    left:   Optional['Node'] = None
+    right:  Optional['Node'] = None
 
 # Functions
 
-def dfs(root):
+def dfs(root: Optional[Node]) -> None:
     ''' Traverse binary tree in depth-first order '''
     if not root: return                         # Base case: No Node
 
@@ -26,7 +27,7 @@ def dfs(root):
     print(root.value)                           # Visit current
     dfs(root.right)                             # Recursive: Visit right branch
 
-def bfs(root):
+def bfs(root: Optional[Node]) -> None:
     ''' Traverse binary tree in breadth-first order '''
     queue = deque([root])                       # Queue of nodes to visit
 
