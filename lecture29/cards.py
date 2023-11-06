@@ -2,10 +2,9 @@
 
 ''' Sorting Cards '''
 
-from dataclasses import dataclass
+from dataclasses    import dataclass
+from priority_queue import PriorityQueueSA, PriorityQueueBH
 import sys
-
-import priority_queue
 
 # Constants
 
@@ -33,7 +32,7 @@ class Card:
 # Main Execution
 
 def main(stream=sys.stdin):
-    cards = priority_queue.PriorityQueueBH(key=lambda c: c.key)
+    cards = PriorityQueueBH(key=lambda c: c.key)
 
     for line in stream:
         rank, suit = line.split()
