@@ -35,7 +35,7 @@ class Tree:
             return True
 
         # Recursive: Go to left or right subtree based on value
-        if value <= node.value:
+        if value < node.value:
             return self._search(node.left, value)
         else:
             return self._search(node.right, value)
@@ -58,7 +58,7 @@ class Tree:
             raise ValueError
 
         # Recursive: Go to left or right and update link
-        if value <= node.value:
+        if value < node.value:
             node.left  = self._insert(node.left, value)
         else:
             node.right = self._insert(node.right, value)
