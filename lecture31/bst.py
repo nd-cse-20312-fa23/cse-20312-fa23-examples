@@ -89,7 +89,7 @@ def main(stream=sys.stdin):
 
     for line in stream:
         strs = line.split()                 # Split line into individual strings
-        ints = list(map(int, strs))         # Convert each string into an int
+        ints = [int(s) for s in strs]       # Convert each string into an int
         tree = Tree()
 
         for number in ints:                 # Insert ints into tree
