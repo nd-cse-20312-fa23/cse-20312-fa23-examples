@@ -8,9 +8,13 @@ Perform a BFS traversal of graph using iteration.
 from collections import defaultdict, deque
 import sys
 
+# Types
+
+Graph = dict[int, list[int]]
+
 # Functions
 
-def read_graph(stream=sys.stdin):
+def read_graph(stream=sys.stdin) -> Graph:
     graph = defaultdict(list)
 
     for line in stream:
@@ -19,7 +23,7 @@ def read_graph(stream=sys.stdin):
 
     return graph
 
-def bfs(graph, vertex):
+def bfs(graph: Graph, vertex: int) -> None:
     frontier = deque([vertex])      # Vertices we can visit
     visited  = set()                # Vertices we have already visited
 

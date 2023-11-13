@@ -8,9 +8,13 @@ Perform a DFS traversal of graph using recursion.
 from collections import defaultdict
 import sys
 
+# Types
+
+Graph = dict[int, list[int]]
+
 # Functions
 
-def read_graph(stream=sys.stdin):
+def read_graph(stream=sys.stdin) -> Graph:
     graph = defaultdict(list)
 
     for line in stream:
@@ -19,7 +23,7 @@ def read_graph(stream=sys.stdin):
 
     return graph
 
-def dfs(graph, vertex, visited):
+def dfs(graph: Graph, vertex: int, visited: set[int]) -> None:
     # Base Case: Already visited
     if vertex in visited:
         return
@@ -36,7 +40,7 @@ def dfs(graph, vertex, visited):
 
 # Main Execution
 
-def main(stream=sys.stdin):
+def main(stream=sys.stdin) -> None:
     graph = read_graph(stream)
 
     dfs(graph, min(graph.keys()), set())

@@ -8,9 +8,13 @@ Perform a DFS traversal of graph using iteration.
 from collections import defaultdict
 import sys
 
+# Types
+
+Graph = dict[int, list[int]]
+
 # Functions
 
-def read_graph(stream=sys.stdin):
+def read_graph(stream=sys.stdin) -> Graph:
     graph = defaultdict(list)
 
     for line in stream:
@@ -19,7 +23,7 @@ def read_graph(stream=sys.stdin):
 
     return graph
 
-def dfs(graph, vertex):
+def dfs(graph: Graph, vertex: int) -> None:
     frontier = [vertex]             # Vertices we can visit
     visited  = set()                # Vertices we have already visited
 
