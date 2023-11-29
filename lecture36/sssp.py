@@ -18,7 +18,7 @@ Graph = dict[str, dict[str, int]]
 def read_graph(stream) -> Graph:
     ''' Read in directed graph '''
     graph: Graph = collections.defaultdict(dict)
-    for line in sys.stdin:
+    for line in stream:
         source, target, weight = line.split()
         graph[source][target] = int(weight)
     return graph
