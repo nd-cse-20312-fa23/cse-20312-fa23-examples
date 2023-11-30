@@ -5,8 +5,6 @@
 Represent graph as adjaceny list.
 '''
 
-from collections import defaultdict
-
 import sys
 
 # Types
@@ -23,7 +21,7 @@ def read_graph(stream) -> AdjacencyList:
         return {}
 
     # Initialize empty adjacency list
-    graph = defaultdict(list)
+    graph = {v: [] for v in range(n)}
 
     # Read each edge and update adjacency list
     for _ in range(m):
