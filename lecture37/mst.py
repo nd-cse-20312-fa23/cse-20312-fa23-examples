@@ -40,6 +40,7 @@ def compute_sssp(graph: Graph, start: str) -> dict[str, str]:
         for neighbor, weight in graph[target].items():
             heapq.heappush(frontier, (distance + weight, neighbor, target))
 
+    del visited[start]
     return visited
 
 def reconstruct_path(visited: dict[str, str], source: str, target: str) -> list[str]:
@@ -70,6 +71,7 @@ def compute_mst(graph: Graph, start: str) -> dict[str, str]:
         for neighbor, weight in graph[target].items():
             heapq.heappush(frontier, (weight, neighbor, target))
 
+    del visited[start]
     return visited
 
 # Main Execution
@@ -87,7 +89,7 @@ def main() -> None:
 
     # MST
     mst   = compute_mst(graph, start)
-    edges = sorted((min(s, t), max(s, t)) for s, t in mst.items() if s != t)
+    edges = sorted((min(s, t), max(s, t)) for s, t in mst.items())
 
     print('MST')
     print(sum(graph[s][t] for s, t in edges))
