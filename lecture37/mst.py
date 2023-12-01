@@ -43,15 +43,15 @@ def compute_sssp(graph: Graph, origin: str) -> dict[str, str]:
     del visited[origin]
     return visited
 
-def reconstruct_path(visited: dict[str, str], source: str, target: str) -> list[str]:
+def reconstruct_path(visited: dict[str, str], origin: str, destination: str) -> list[str]:
     path = []
-    curr = target
+    curr = destination
 
-    while curr != source:
+    while curr != origin:
         path.append(curr)
         curr = visited[curr]
 
-    path.append(source)
+    path.append(origin)
     return path[::-1]
 
 # Compute MST
@@ -77,13 +77,13 @@ def compute_mst(graph: Graph, origin: str) -> dict[str, str]:
 # Main Execution
 
 def main() -> None:
-    graph = read_graph()
+    graph  = read_graph()
     origin = min(graph)
 
     # SSSP
     sssp  = compute_sssp(graph, origin)
     print('SSSP')
-    for target in sorted(graph.keys())[1:]:
+    for target in sorted(graph)[1:]:
         path = reconstruct_path(sssp, origin, target)
         print(f'{origin} -> {target} = {" ".join(path)}')
 
