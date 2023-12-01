@@ -25,8 +25,8 @@ def read_graph() -> Graph:
 
 # Compute SSSP
 
-def compute_sssp(graph: Graph, start: str) -> dict[str, str]:
-    frontier = [(0, start, start)]
+def compute_sssp(graph: Graph, origin: str) -> dict[str, str]:
+    frontier = [(0, origin, origin)]
     visited  = {}
 
     while frontier:
@@ -40,7 +40,7 @@ def compute_sssp(graph: Graph, start: str) -> dict[str, str]:
         for neighbor, weight in graph[target].items():
             heapq.heappush(frontier, (distance + weight, neighbor, target))
 
-    del visited[start]
+    del visited[origin]
     return visited
 
 def reconstruct_path(visited: dict[str, str], source: str, target: str) -> list[str]:
@@ -56,8 +56,8 @@ def reconstruct_path(visited: dict[str, str], source: str, target: str) -> list[
 
 # Compute MST
 
-def compute_mst(graph: Graph, start: str) -> dict[str, str]:
-    frontier = [(0, start, start)]
+def compute_mst(graph: Graph, origin: str) -> dict[str, str]:
+    frontier = [(0, origin, origin)]
     visited  = {}
 
     while frontier:
@@ -71,24 +71,24 @@ def compute_mst(graph: Graph, start: str) -> dict[str, str]:
         for neighbor, weight in graph[target].items():
             heapq.heappush(frontier, (weight, neighbor, target))
 
-    del visited[start]
+    del visited[origin]
     return visited
 
 # Main Execution
 
 def main() -> None:
     graph = read_graph()
-    start = min(graph.keys())
+    origin = min(graph)
 
     # SSSP
-    sssp  = compute_sssp(graph, start)
+    sssp  = compute_sssp(graph, origin)
     print('SSSP')
     for target in sorted(graph.keys())[1:]:
-        path = reconstruct_path(sssp, start, target)
-        print(f'{start} -> {target} = {" ".join(path)}')
+        path = reconstruct_path(sssp, origin, target)
+        print(f'{origin} -> {target} = {" ".join(path)}')
 
     # MST
-    mst   = compute_mst(graph, start)
+    mst   = compute_mst(graph, origin)
     edges = sorted((min(s, t), max(s, t)) for s, t in mst.items())
 
     print('MST')
